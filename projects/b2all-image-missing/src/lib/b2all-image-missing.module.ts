@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { CustomConfig, CustomConfigService } from './custom-config';
 import { ImageDirective } from './image.directive';
-
 @NgModule({
   declarations: [
     ImageDirective
@@ -13,12 +13,14 @@ import { ImageDirective } from './image.directive';
 })
 export class B2allImageMissingModule {
   // assets/images/logos/b2all-solution/missing-image-logo.png
-  static forRoot(defaultImagePath: string): ModuleWithProviders<B2allImageMissingModule> {
+  static forRoot(config: CustomConfig): ModuleWithProviders<B2allImageMissingModule> {
     return {
       ngModule: B2allImageMissingModule,
-      providers: [{
-        provide: 'defaultImagePath', useValue: defaultImagePath
-      }]
+      providers: [
+        {
+          provide: CustomConfigService, useValue: config
+        }
+      ]
     };
   }
 }

@@ -1,6 +1,6 @@
 import { Inject } from '@angular/core';
 import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
-
+import { CustomConfig, CustomConfigService } from './custom-config';
 @Directive({
   selector: '[libImage]'
 })
@@ -10,7 +10,7 @@ export class ImageDirective implements AfterViewInit {
 
   constructor(
     private imageRef: ElementRef,
-    @Inject('defaultImagePath') private defaultImagePath: string
+    @Inject(CustomConfigService) private config: CustomConfig
   ) {
   }
 
@@ -22,7 +22,7 @@ export class ImageDirective implements AfterViewInit {
 
     img.onerror = () => {
       // Set a placeholder image
-      this.setImage(this.defaultImagePath);
+      this.setImage(this.config.imageDefaultPath);
     };
 
     img.src = this.src;
