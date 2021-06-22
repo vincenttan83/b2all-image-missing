@@ -2,6 +2,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "b2all-image-missing": [
+        "dist/b2all-image-missing/b2all-image-missing",
+        "dist/b2all-image-missing"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
